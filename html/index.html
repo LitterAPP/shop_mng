@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>商铺管理后台</title>
+    <link type="text/css" rel="styleSheet"  href="../css/shop.css" />
+</head>
+<body>
+<div id="frame">
+    <div class="top">
+        <div class="top-title">商铺后台管理</div>
+        <div class="login">
+            <div>wenxy</div>
+            <div>quit</div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="nav" v-bind:style="{height:(innerHeight-85) +'px'}">
+            <iframe frameborder="0" src="../html/common/nav.html"></iframe>
+        </div>
+        <div class="content" v-bind:style="{height:(innerHeight-85) +'px'}">
+            <iframe id="contentFrame" frameborder="0"  v-bind:src="contentSrc"></iframe>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="../js/index.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</body>
+</html>

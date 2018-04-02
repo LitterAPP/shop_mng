@@ -1,0 +1,25 @@
+.card{
+    background: #F0F0F0;
+    margin-bottom:10px ;
+    font-size: 14px;
+    color: #000;
+}
+.shopAvatar img{
+    height: 45px;
+    width: 45px;
+    border:2px solid #fff;
+}
+.card div{
+    display: inline-block;
+    margin: 10px;
+}
+
+.shopBanner img{
+    height: 120px;
+    width: 320px;
+}
+
+.navImage img{
+    height: 30px;
+    width: 60px;
+}

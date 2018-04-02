@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link type="text/css" rel="styleSheet"  href="../../css/productMng.css" />
+    <link type="text/css" rel="styleSheet"  href="../../css/table.css" />
+    <link type="text/css" rel="styleSheet"  href="../../css/search.css" />
+</head>
+<body>
+<div id="productMng">
+<div class="search">
+    <div>商品ID：<input  v-model="condition.productId" type="text" placeholder="商品ID"/></div>
+    <div>商品名：<input v-model="condition.productName"  type="text" placeholder="商品名"/></div>
+    <div>状态：
+        <select v-model="condition.status.selected">
+            <option disabled value="0">请选择</option>
+            <option v-for="option in condition.status.options" v-bind:value="option.value">
+                {{ option.text }}
+            </option>
+        </select>
+    </div>
+    <div>一级分类：
+        <select v-on:change="pCategoryChanged" v-model="condition.pCategory.selected">
+            <option disabled value="0">请选择</option>
+            <option v-for="option in condition.pCategory.options" v-bind:value="option.value">
+                {{ option.text }}
+            </option>
+        </select>
+    </div>
+    <div v-if="condition.subCategory">二级分类：
+        <select v-model="condition.subCategory.selected">
+            <option disabled value="0">请选择</option>
+            <option  v-for="option in condition.subCategory.options" v-bind:value="option.value">
+                {{ option.text }}
+            </option>
+        </select>
+    </div>
+    <div>
+        <button @click="search">查询</button>
+    </div>
+</div>
+
+<div class="table">
+    <div class="table-column-group">
+        <div class="table-column"></div>
+        <div class="table-column"></div>
+        <div class="table-column"></div>
+    </div>
+    <div class="table-header-group">
+        <ul class="table-row">
+            <li class="table-cell">商品ID</li>
+            <li class="table-cell">商品名称</li>
+            <li class="table-cell">商品原价</li>
+            <li class="table-cell">商品现价</li>
+            <li class="table-cell">是否参团</li>
+            <li class="table-cell">团购价</li>
+            <li class="table-cell">库存</li>
+            <li class="table-cell">状态</li>
+            <li class="table-cell">PV</li>
+            <li class="table-cell">交易量</li>
+            <li class="table-cell">是否热门</li>
+            <li class="table-cell">是否打折</li>
+            <li class="table-cell">创建时间</li>
+        </ul>
+    </div>
+    <!--
+    <div class="table-footer-group">
+        <ul class="table-row">
+            <li class="table-cell"></li>
+            <li class="table-cell"></li>
+            <li class="table-cell"></li>
+            <li class="table-cell"></li>
+        </ul>
+    </div>-->
+    <div class="table-row-group">
+        <ul class="table-row" v-for="item in list">
+            <li class="table-cell">{{item.productId}}</li>
+            <li class="table-cell">{{item.productName}}</li>
+            <li class="table-cell">{{item.productOriginAmount}}</li>
+            <li class="table-cell">{{item.productNowAmount}}</li>
+            <li v-if="item.joinTogether" class="table-cell">是</li>
+            <li v-else class="table-cell">否</li>
+
+            <li class="table-cell">{{item.productTogetherAmount}}</li>
+            <li class="table-cell">{{item.sotre}}</li>
+
+            <li v-if="item.status==1" class="table-cell">上架</li>
+            <li v-else  class="table-cell">下架</li>
+
+            <li class="table-cell">{{item.pv}}</li>
+            <li class="table-cell">{{item.deal}}</li>
+
+            <li v-if="item.isHot" class="table-cell">是</li>
+            <li v-else  class="table-cell">否</li>
+
+            <li v-if="item.isSale" class="table-cell">是</li>
+            <li v-else  class="table-cell">否</li>
+            <li class="table-cell">{{item.createTime}}</li>
+
+        </ul>
+    </div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="../../js/productMng.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</body>
+</html>
